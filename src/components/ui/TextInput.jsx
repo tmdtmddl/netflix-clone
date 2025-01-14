@@ -1,0 +1,48 @@
+import { useState, useEffect, useRef, useCallback } from "react";
+//리액트버전 19이상에서만 {}prodrilling에서 ref라는 속성 전달가능
+
+const TextInput = ({ inputRef, value, onChangeText, id, placeholder }) => {
+  const onChange = (e) => {
+    onChangeText(e.target.value);
+  };
+
+  return (
+    <div>
+      <label htmlFor={id}>{placeholder}</label>
+      <input
+        type="text"
+        id={id}
+        value={value}
+        onChange={onChange}
+        ref={inputRef}
+        style={{ color: "black" }}
+      />
+    </div>
+  );
+};
+
+//커스텀 훅
+const useTextInput = () => {
+  const ref = useRef();
+  const Input = useCallback(({ value, onChangeText, id, placeholder }) => {
+    //props를 받는 컴포넌트가 속성으로 많은 개체들을 요구 할때 예)3개 이상
+    //문자열이 아닐대, 객체로 만들어서 전달.
+    const props = {
+      value,
+      onChangeText,
+      id,
+      placeholder,
+    };
+    return <TextInput {...props} inputRef={ref} />;
+  });
+  const focus = () => {
+    if (ref.current) {
+      ref.current.focus();
+    }
+  };
+  return {
+    Input,
+  };
+};
+
+export { TextInput, useTextInput };
