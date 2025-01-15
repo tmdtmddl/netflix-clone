@@ -77,8 +77,8 @@ export const useTextInput = () => {
           id={id}
           inputRef={ref}
           placeholder={placeholder}
-          div={divCn}
-          input={inputCn}
+          divCn={divCn}
+          inputCn={inputCn}
         />
       );
     },
