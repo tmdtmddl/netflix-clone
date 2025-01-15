@@ -8,7 +8,6 @@ const Button = ({ onClick, type, children, style }) => {
       style={{
         padding: "5px 10px",
         borderRadius: 4,
-        fontSize: 100,
         display: "flex",
         justifyContent: "center ",
         alignItems: "center",

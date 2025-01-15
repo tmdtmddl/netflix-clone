@@ -37,6 +37,7 @@ const Footer = () => {
               style={{
                 color: OpenColor.gray[5],
                 textDecoration: "underline",
+                fontSize: ".65rem",
               }}
             >
               {menu.name}
