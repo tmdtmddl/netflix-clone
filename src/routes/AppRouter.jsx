@@ -8,6 +8,9 @@ import LearnReact from "./LearnReact";
 import UseState from "./LearnReact/LearnuseState";
 import LearnUseEffect from "./LearnReact/learn-useEffect";
 import LearnUseRef from "./LearnReact/learn-useRef";
+import LearnUseMemo from "./LearnReact/learn-useMemo";
+import Todo from "./todo";
+import PDsameple from "./LearnReact/props-drilling/sample1";
 
 const AppRouter = () => {
   return (
@@ -24,12 +27,13 @@ const AppRouter = () => {
           <Route path="useState" element={<UseState />} />
           <Route path="useEffect" element={<LearnUseEffect />} />
           <Route path="useRef" element={<LearnUseRef />} />
+          <Route path="usememo" element={<LearnUseMemo />} />
+          <Route path="props-drilling" element={<PDsameple />} />
         </Route>
+        <Route path="todo" element={<Todo />} />
       </Routes>
     </BrowserRouter>
   );
 };
 
 export default AppRouter;
-// import LearnUseMemo from "./LearnReact/learn-useMemo/useMemo";
-//  {/* <Route path="usememo" element={<LearnUseMemo />} /> */}

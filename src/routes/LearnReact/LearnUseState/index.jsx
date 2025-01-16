@@ -253,6 +253,38 @@ const isSamePerson = (p1, p2) => {
   return false;
 };
 
-//문자열과 문자열 비교 간단함 === // !== 같은지 다른지
-//숫자비교는 ===,!==,<,>,<=,>=
-//객체비교는 모든 값을 하나하나 일일이 비교해줘야한다.
+// //문자열과 문자열 비교 간단함 === // !== 같은지 다른지
+// //숫자비교는 ===,!==,<,>,<=,>=
+// //객체비교는 모든 값을 하나하나 일일이 비교해줘야한다.
+
+// import React, { useEffect, useState } from "react";
+
+// const UseState = () => {
+//   const [string, setString] = useState("");
+
+//   const s = () => {
+//     setString((prev) => {
+//       return `${prev} 승이`;
+//     });
+//   };
+//   useEffect(() => {
+//     console.log(string);
+//   }, [string]); //[]안이변경되면 {}안에 실행해줘
+//   return (
+//     <div>
+//       <p>
+//         <b>string: {string}</b>
+//       </p>
+//       <input
+//         type="text"
+//         value={string}
+//         onChange={(e) => {
+//           setString(e.target.value); //()안에 직접초기갑과 갇은타입
+//         }}
+//       />
+//       <button onClick={s}>fire</button>
+//     </div>
+//   );
+// };
+
+// export default UseState;
