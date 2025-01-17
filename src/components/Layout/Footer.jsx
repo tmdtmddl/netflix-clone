@@ -1,9 +1,9 @@
 import React from "react";
 import { fMenus } from "../../assets/fakebase";
-import { Link } from "react-router-dom";
 import { Button } from "../ui/Button";
 import { HiLanguage } from "react-icons/hi2";
 import OpenColor from "open-color";
+import FooterItem from "./Footeritem";
 //해당경로로 이동함
 //<Link to={경로}>이름</Link>
 //fMenus.map()으로 구현
@@ -29,19 +29,11 @@ const Footer = () => {
           rowGap: 10,
         }}
       >
-        {fMenus.map((menu, index) => {
+        {fMenus.map((menu) => {
           return (
-            <Link
-              key={index}
-              to={menu.path}
-              style={{
-                color: OpenColor.gray[5],
-                textDecoration: "underline",
-                fontSize: ".65rem",
-              }}
-            >
-              {menu.name}
-            </Link>
+            <FooterItem key={menu.path} {...menu} />
+            //중괄호안에 ...객체의 변수명은 복사하는 뜻이다
+            //리액트컴포넌트에 이렇게 하는것은 복사한 객체의 전부를 전달해주는것이다.
           );
         })}
       </ul>
@@ -55,10 +47,12 @@ const Footer = () => {
       </Button>
       <p>넷플릭스 대한민국</p>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit,
-        distinctio voluptatibus nesciunt doloribus voluptatem sunt consequuntur
-        temporibus quas tempore exercitationem eaque ullam magnam asperiores
-        consectetur quasi nisi vitae. Maxime, quibusdam.
+        넷플릭스서비시스코리아 유한회사 통신판매업신고번호:
+        제2018-서울종로-0426호 전화번호: 00-308-321-0161 (수신자 부담) 대표:
+        레지널드 숀 톰프슨 이메일 주소: korea@netflix.com 주소: 대한민국
+        서울특별시 종로구 우정국로 26, 센트로폴리스 A동 20층 우편번호 03161
+        사업자등록번호: 165-87-00119 클라우드 호스팅: Amazon Web Services Inc.
+        공정거래위원회 웹사이트
       </p>
     </footer>
   );
