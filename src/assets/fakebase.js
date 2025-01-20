@@ -5,6 +5,14 @@ import {
   IoChatbubbles,
 } from "react-icons/io5";
 
+export const users = [
+  {
+    email: "tester@test.com",
+    password: "5935",
+    uid: "tester1",
+  },
+];
+
 export const user = null;
 
 export const fMenus = [
