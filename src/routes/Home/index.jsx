@@ -34,6 +34,7 @@ import AnotherReasonItem from "./AnotherReasonItem";
 import More from "./More";
 import FAQ from "./FAQ";
 import Start from "./Start";
+import ImageSlider from "./ImageSlider";
 
 const Home = () => {
   const Text = useTextInput();
@@ -46,9 +47,9 @@ const Home = () => {
 
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.h1}>Home</h1>
       <Start />
       <More />
+      <ImageSlider />
       <div className={styles.container.div}>
         <p className={styles.container.p}>가입해야하는 또다른이유</p>
         <ul className={styles.container.ul}>

@@ -209,7 +209,7 @@ const Start = () => {
 
         <div className={styles.buttonWrap}>
           <button className={styles.button}>
-            시작하기{" "}
+            시작하기
             <span className={styles.icon}>
               <IoChevronForward />
             </span>

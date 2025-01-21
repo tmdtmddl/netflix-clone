@@ -95,6 +95,8 @@ import { useMyContext } from "../../contextApi/ContextProvider";
 import { users } from "../../assets/fakebase";
 import Input from "../../components/ui/Input";
 import { useNavigate } from "react-router-dom";
+import CheckBox from "../../components/ui/CheckBox";
+import styles from "./signin.css";
 
 const Signin = () => {
   const navi = useNavigate();
@@ -102,6 +104,7 @@ const Signin = () => {
   const { email } = useMyContext();
   const [value, setValue] = useState(email);
   const [pwd, setPwd] = useState("");
+  const [checked, setChecked] = useState(false);
 
   const emailMessage = useMemo(() => {
     if (value.length === 0) {
@@ -183,9 +186,17 @@ const Signin = () => {
     [emailMessage, pwdMessage, value, pwd, navi]
   );
 
+  useEffect(() => {
+    //window === documet 불러와서 스크롤조절방법
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <div>
-      <form action="" onSubmit={onSubmit}>
+      <form action="" onSubmit={onSubmit} className={styles.form}>
         <Input
           id="email"
           placeholder={"이메일 주소"}
@@ -200,17 +211,24 @@ const Signin = () => {
           type="password"
         />
 
-        <button>로그인</button>
-        <button type="button">비밀번호를 잊으셨나요?</button>
-        <div>
-          <input type="checkbox" name="" id="check1" />
-          <label htmlFor="check1">로그인 정보 저장</label>
-        </div>
-        <button>
-          Netflix 회원이 아닌가요? <span>지금 가입하세요.</span>
+        <button className={styles.login}>로그인</button>
+        <button type="button" className={styles.forgot}>
+          비밀번호를 잊으셨나요?
+        </button>
+        <CheckBox
+          state={checked}
+          onclick={() => {
+            setChecked((prev) => !prev);
+          }}
+          id="chek"
+          label="로그인정보"
+        />
+        <button className={styles.new}>
+          Netflix 회원이 아닌가요?{" "}
+          <span className={styles.span}>지금 가입하세요.</span>
         </button>
       </form>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> */}
     </div>
   );
 };
