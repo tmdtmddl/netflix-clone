@@ -119,3 +119,5 @@ export const imgs = [
       "https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_1280.jpg",
   },
 ];
+
+export const openSans = '"Open Sans", serif';
