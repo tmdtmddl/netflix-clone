@@ -87,7 +87,7 @@ const ContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log({ email });
+    console.log();
   }, [email]);
 
   return (

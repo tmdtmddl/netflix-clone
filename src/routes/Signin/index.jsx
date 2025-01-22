@@ -224,7 +224,7 @@ const Signin = () => {
           label="로그인정보"
         />
         <button className={styles.new}>
-          Netflix 회원이 아닌가요?{" "}
+          Netflix 회원이 아닌가요?
           <span className={styles.span}>지금 가입하세요.</span>
         </button>
       </form>
