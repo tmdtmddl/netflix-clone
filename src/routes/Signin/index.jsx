@@ -92,7 +92,7 @@
 // export default signin;
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useMyContext } from "../../contextApi/ContextProvider";
-import { users } from "../../assets/fakebase";
+import { user, users } from "../../assets/fakebase";
 import Input from "../../components/ui/Input";
 import { useNavigate } from "react-router-dom";
 import CheckBox from "../../components/ui/CheckBox";
@@ -101,7 +101,7 @@ import styles from "./signin.css";
 const Signin = () => {
   const navi = useNavigate();
 
-  const { email } = useMyContext();
+  const { email, onUserLogin, user } = useMyContext();
   const [value, setValue] = useState(email);
   const [pwd, setPwd] = useState("");
   const [checked, setChecked] = useState(false);
@@ -180,10 +180,12 @@ const Signin = () => {
         return alert("비밀번호가 일치하지 않습니다.");
       }
 
+      onUserLogin(email, foundEmail.uid);
+
       console.log("환영합니다.");
       navi("/");
     },
-    [emailMessage, pwdMessage, value, pwd, navi]
+    [emailMessage, pwdMessage, value, pwd, navi, onUserLogin, email]
   );
 
   useEffect(() => {
@@ -193,6 +195,12 @@ const Signin = () => {
       behavior: "smooth",
     });
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      navi("/");
+    }
+  }, [user, navi]);
 
   return (
     <div>
@@ -221,7 +229,7 @@ const Signin = () => {
             setChecked((prev) => !prev);
           }}
           id="chek"
-          label="로그인정보"
+          label="로그인정보를 저장하겠습니다."
         />
         <button className={styles.new}>
           Netflix 회원이 아닌가요?

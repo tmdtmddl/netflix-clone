@@ -35,15 +35,22 @@ import More from "./More";
 import FAQ from "./FAQ";
 import Start from "./Start";
 import ImageSlider from "./ImageSlider";
+import { useMyContext } from "../../contextApi/ContextProvider";
+import UserHome from "./userHome";
 
 const Home = () => {
-  const Text = useTextInput();
+  const { user } = useMyContext();
+  if (user) {
+    return <UserHome />;
+  }
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  // const Text = useTextInput();
 
-    console.log(Text.ref.current.value);
-  };
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   console.log(Text.ref.current.value);
+  // };
 
   return (
     <div className={styles.wrap}>
