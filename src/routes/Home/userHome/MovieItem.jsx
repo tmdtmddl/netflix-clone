@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import styles from "./movieitem.css";
+import { IoAdd, IoChevronDown, IoPlay, IoThumbsUp } from "react-icons/io5";
 const imgUlr = "https://image.tmdb.org/t/p/w500";
 
 const MovieItem = ({
@@ -16,6 +17,9 @@ const MovieItem = ({
   id,
 }) => {
   const [isHovering, setIsHovering] = useState(false);
+  const timeWatched = useMemo(() => {
+    return Math.floor(Math.random() * 11);
+  }, []);
 
   useEffect(() => {
     if (id === 539972) {
@@ -33,33 +37,49 @@ const MovieItem = ({
         setIsHovering(false);
       }}
     >
-      <div className={styles.hover.container({ isHovering })}>
+      <div
+        className={styles.hover.container({ isHovering })}
+        style={{ zIndex: id === 939243 ? 100 : undefined }}
+      >
         <img
           src={`${imgUlr}${poster_path}`}
           alt={title}
           width={100}
           height={50}
+          className={styles.hover.img}
         />
-        <div>
-          <div>
-            <ul>
+        <div className={styles.hover.wrap}>
+          <div className={styles.hover.icons.wrap}>
+            <ul className={styles.hover.icons.ul}>
               <li>
-                <button>재생</button>
+                <button className={styles.hover.play}>
+                  <IoPlay />
+                </button>
               </li>
               <li>
-                <button>추가</button>
+                <button className={styles.hover.icon}>
+                  <IoAdd />
+                </button>
               </li>
               <li>
-                <button>좋아요</button>
+                <button className={styles.hover.icon}>
+                  <IoThumbsUp />
+                </button>
               </li>
             </ul>
-            <button>아래로</button>
+            <button className={styles.hover.icon}>
+              <IoChevronDown />
+            </button>
           </div>
-          <div>
-            <div>
-              <span></span>
+
+          <div className={styles.hover.times}>
+            <div className={styles.hover.div}>
+              <span
+                className={styles.hover.span}
+                style={{ width: `${timeWatched * 10}%` }}
+              ></span>
             </div>
-            <p>영상길이</p>
+            <p className={styles.hover.time}>영상길이</p>
           </div>
         </div>
       </div>

@@ -32,7 +32,7 @@ const UserHome = () => {
   }, [data, isLoading]);
   return (
     <div className={styles.container}>
-      <h1>react query</h1>
+      {error && <h1>{error}</h1>}
       {isLoading ? (
         <h2>Loading...</h2>
       ) : (
@@ -42,7 +42,33 @@ const UserHome = () => {
           })}
         </Slider>
       )}
-      {error && <h3>{error}</h3>}
+      {isLoading ? (
+        <h2>Loading...</h2>
+      ) : (
+        <Slider slidesToShow={2} slidesToScroll={2}>
+          {data?.results?.map((movie) => {
+            return <MovieItem key={movie.id} {...movie} />;
+          })}
+        </Slider>
+      )}
+      {isLoading ? (
+        <h2>Loading...</h2>
+      ) : (
+        <Slider slidesToShow={2} slidesToScroll={2}>
+          {data?.results?.map((movie) => {
+            return <MovieItem key={movie.id} {...movie} />;
+          })}
+        </Slider>
+      )}
+      {isLoading ? (
+        <h2>Loading...</h2>
+      ) : (
+        <Slider slidesToShow={2} slidesToScroll={2}>
+          {data?.results?.map((movie) => {
+            return <MovieItem key={movie.id} {...movie} />;
+          })}
+        </Slider>
+      )}
       {/* {!error ? (
         <h1>{isLoading ? "Loading..." : "Data fetched!!"}</h1>
       ) : (

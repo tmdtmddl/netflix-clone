@@ -2,14 +2,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { HiLanguage } from "react-icons/hi2";
 import { RiNetflixFill } from "react-icons/ri";
 import OpenColor from "open-color";
-import { useEffect } from "react";
-import { user } from "../../assets/fakebase";
+import { useContext, useEffect } from "react";
 import { Button } from "../ui/Button";
 import styles from "./header.css";
 
 const Header = () => {
   const navi = useNavigate();
 
+  const { user, onUserLogout } = useContext();
   // const location = useLocation()
   // const pathname = location.pathname 이 과정을 아래처럼 할 수 잇음
 
@@ -48,7 +48,7 @@ const Header = () => {
         </li>
         {/* 조건 && 연산자 ===  앞의 조건에 부합할 때 실행할 코드를 && 오른편에 적어줍니다. */}
         {/* 조건 ? : 연산자 === 앞의 조건에 부합때 실행할 코드는 ? 오른편에, 앞의 조건에 부합하지 않을 때 실행할 코드는 : 오른편에  */}
-        {pathname !== "/login" && (
+        {pathname !== "/login" && !user && (
           <li>
             <Button
               style={{
@@ -58,6 +58,20 @@ const Header = () => {
               onClick={onL}
             >
               로그인
+            </Button>
+          </li>
+        )}
+
+        {user && (
+          <li>
+            <Button
+              style={{
+                backgroundColor: OpenColor.red[7],
+                fontSize: ".75rem",
+              }}
+              onClick={onUserLogout}
+            >
+              로그아웃
             </Button>
           </li>
         )}
